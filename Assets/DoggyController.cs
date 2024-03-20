@@ -8,6 +8,7 @@ public class DoggyController : MonoBehaviour
     
     Animator animator;//create a reference to an animator type
     SpriteRenderer spriteRenderer;
+    [SerializeField] float speed = 4f;
     void Start()
     {
         //reference to our animator component
@@ -24,11 +25,13 @@ public class DoggyController : MonoBehaviour
         {
             animator.SetBool("right", true);//set the right parametor to true
             spriteRenderer.flipX = false;// dont wanna flip
+            transform.Translate(Time.deltaTime * speed * Vector3.right);
         }
         else if (Input.GetKey(KeyCode.LeftArrow))
         {
             animator.SetBool("right", true);//set the right parameter top false
             spriteRenderer.flipX = true;//want ot flip
+            transform.Translate(Time.deltaTime * speed * Vector3.left);
         }
         else
         {
@@ -38,6 +41,7 @@ public class DoggyController : MonoBehaviour
         if (Input.GetKey(KeyCode.UpArrow))
         {
             animator.SetBool("up", true);//set the up parametor to true
+            transform.Translate(Time.deltaTime * speed * Vector3.up);
         }
         else
         {
@@ -47,6 +51,7 @@ public class DoggyController : MonoBehaviour
         if (Input.GetKey(KeyCode.DownArrow))
         {
             animator.SetBool("down", true);//set the down parametor to true
+            transform.Translate(Time.deltaTime * speed * Vector3.down);
         }
         else
         {
